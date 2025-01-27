@@ -1,0 +1,294 @@
+Using UNIX Basic Commands: 
+
+         1.  To display the current working directory, the command is: 
+             pwd 
+             The output is as follows. 
+	/root
+
+         2.  Display the path to and name of your HOME directory. 
+	To display path--> echo $HOME
+	Name of Home directory-->cd pwd
+
+         3.  Display the login name using which you have logged into the system 
+	Command-->logname
+	Output-->admin
+
+         4.  Display the hidden files of your current directory. 
+	Ls -a
+   .     .bash_profile Desktop .local  Public
+   ..    .bashrc        Documents   .mozilla   Templates
+   .bash_history .cache    Downloads Music    videos
+   .bash_logout .congig        first.unix  Pictures  .viminfo 
+
+         5.  List the names of all the files in your home directory. 
+	Command--> ls ls-a
+	Output--> .bash _logout   . bashrc  .config    desktop   download   music   public   templets  videos
+                   .bash_history   .bash_profile   .cache   .cshrc   documents   .local   pictures   .ssh  templates   .viminfo
+
+         6.  Using the long listing format to display the files in your directory. 
+	-rw-------. 1 root root 828 aug 25 2022 anaconda-ks.cfg  
+drwxr-xr-x. 2 root root 6 aug 25 2022 Desktop
+drwxr-xr-x. 2 root root 6 aug 25 2022 Documents  
+drwxr-xr-x. 2 root root 6 aug 25 2022 Downloads
+drwxr-xr-x. 2 root root 6 aug 25 2022 music
+drwxr-xr-x. 2 root root 6 aug 25 2022 pictures
+drwxr-xr-x. 2 root root 6 aug 25 2022 public
+drwxr-xr-x. 2 root root 6 aug 25 2022 templates
+drwxr-xr-x. 2 root root 6 aug 25 2022 videos
+
+         7.  List   the files beginning with chap   followed   by any number    or any lower  case 
+             alphabet.   (Example , it should display all files whose names are like  chap1,  chap2, 
+             chap3 ……., chapa,ahapb,chapc,……..) 
+	
+
+         8.  Give   appropriate   command   to   create   a   directory   called   C_prog   under   your   home 
+             directory. (Note: Check the directory using ls ) 
+	Command-->mkdir ~/cprog
+	Output-->cprog
+
+         9.  Create the following directories under your home directory. (Note: Check using ls ) 
+1.	newdir 
+	Command-->ls ~/newdir
+	Output--> ls ~|grep newdir
+
+2.	newdirectory 
+	Command-->ls ~/newdirectory
+	Output--> ls ~|grep newdirectory
+
+
+         10. List the names of all the files, including the contents of the sub directories under 
+             your home directory.
+	/root/cprog:
+	/root/Desktop:
+	/root/Documents:
+	/root/Downloads:
+	/root/Music:
+	/root/newdir:
+	/root/pictures:
+	/root/public:
+	/root/tenplates:
+
+         11. Remove the directory called newdirectory from your working directory. 
+	Command-->rmdir newditectory
+         12. Create a directory called temp under your home directory.
+	Command-->mkdir ~/temp
+	
+         13. Remove   the   directory   called   newdir   under   your   home   directory   and   verify   the 
+              above with the help of the directory listing command. 
+	Command-->rm -r ~/newdir
+	To verify-->ls ~|grep newdir
+
+          14. Create another directory directorynew under the temp directory. 
+	Command-->mkdir ~/temp/directorynew
+	Output--> no output, just prompt
+
+          15. Change the directory to your home directory. 
+	Command-->cd ~
+	Output-->/root
+
+          16. From your home directory, change the directory to directorynew using relative and 
+              absolute path. 
+1.	Absolute path
+	Cd ~/temp/directorynew
+2.	Relative path
+	Cd temp/directorynew
+3.	Output-->/root/temp/directorynew
+
+          17. Remove the directory called c_prog, which is in your home directory. 
+	rmdir ~/cprog
+
+          18. Change to the directory /etc and display the files present in it. 
+	accountsservice         crypto-policies          gcrypt        libaudit.conf             nftables           resolv.conf        sysconfig
+	adjtime                 crypttab                 gdm           libblockdev               nsswitch.conf      rpc                sysctl.conf
+	aliases                 csh.cshrc                geoclue       libibverbs.d              nsswitch.conf.bak  rpm                sysctl.d
+	alsa                    csh.login                glvnd         libnl                     nvme               rsyncd.conf        systemd
+	alternatives            cups                     gnupg         libpaper.d                openldap           rsyslog.conf       system-release
+	anacrontab              cupshelpers              GREP_COLORS   libreport                 opt                rsyslog.d          system-release-cpe
+	appstream.conf          dbus-1                   groff         libssh                    os-release         rwtab.d            terminfo
+	asound.conf             dconf                    group         libuser.conf              ostree             samba              tmpfiles.d
+	at.deny                 debuginfod               group-        locale.conf               PackageKit         sane.d             tpm2-tss
+	audit                   default                  grub2.cfg     localtime                 pam.d              sasl2              trusted-key.key
+	authselect              depmod.d                 grub.d        login.defs                papersize          security           tuned
+	avahi                   dhcp                     gshadow       logrotate.conf            passwd             selinux            udev
+	bash_completion.d       DIR_COLORS               gshadow-      logrotate.d               passwd-            services           udisks2
+	bashrc                  DIR_COLORS.lightbgcolor  gss           lsm                       pbm2ppa.conf       sestatus.conf      updatedb.conf
+	bindresvport.blacklist  dnf                      host.conf     lvm                       pinforc            setroubleshoot     UPower
+	binfmt.d                dnsmasq.conf             hostname      machine-id                pkcs11             sgml               usb_modeswitch.conf
+	bluetooth               dnsmasq.d                hosts         machine-info              pkgconfig          shadow             vconsole.conf
+	brlapi.key              dracut.conf              hp            magic                     pki                shadow-            vimrc
+	brltty                  dracut.conf.d            inittab       mailcap                   plymouth           shells             virc
+	brltty.conf             egl                      inputrc       makedumpfile.conf.sample  pm                 skel               vmware-tools
+	centos-release          enscript.cfg             iproute2      man_db.conf               pnm2ppa.conf       smartmontools      vulkan
+	chromium                environment              iscsi         mcelog                    polkit-1           sos                wgetrc
+	chrony.conf             ethertypes               issue         microcode_ctl             popt.d             speech-dispatcher  wireplumber
+	chrony.keys             exports                  issue.d       mime.types                printcap           ssh                wpa_supplicant
+	cifs-utils              favicon.png              issue.net     mke2fs.conf               profile            ssl                X11
+	cni                     filesystems              kdump         modprobe.d                profile.d          sssd               xattr.conf
+	cockpit                 firefox                  kdump.conf    modules-load.d            protocols          statetab.d         xdg
+	containers              firewalld                kernel        motd                      pulse              subgid             xml
+	cron.d                  flatpak                  keys          motd.d                    qemu-ga            subgid-            yum
+	cron.daily              fonts                    keyutils      mtab                      ras                subuid             yum.conf
+	cron.deny               foomatic                 krb5.conf     multipath                 rc.d               subuid-            yum.repos.d
+	cron.hourly             fprintd.conf             krb5.conf.d   nanorc                    rc.local           sudo.conf
+	cron.monthly            fstab                    ld.so.cache   netconfig                 redhat-release     sudoers
+
+19. List the names of all the files that begin with a dot in the /usr/bin directory. 
+	Ls -d /usr/bin/.*
+
+
+          20. Create a file first.unix with the following contents. 
+              Hi! Good Morning everybody. 
+              Welcome to the First exercise on UNIX. 
+              Hope you enjoy doing the assignments. 
+	Command-->touch first.unix
+                       Echo “ Hi! Good Morning everybody. 
+              Welcome to the First exercise on UNIX. 
+              Hope you enjoy doing the assignments. “> first.unix
+
+
+          21. Copy the file first.unix in your home directory to first.unics. 
+              (Note: checked using ls, first.unix file also should exist along with first.unics)
+
+	cp~/first.unix ~/first.unics
+[root@hostname01 ~]# ls ~
+	anaconda-ks.cfg  cprog  Desktop  Documents  Downloads  first.unics  first.unix  Music  Pictures  Public  temp  Templates  Videos
+
+          22. List the contents of first.unix and first.unics with a single command. 
+	Command-->Cat first.unix first.unics
+	              Hi! Good Morning everybody. Welcome to the First exercise on UNIX. Hope you enjoy doing the assignments. 
+	Hi! Good Morning everybody. Welcome to the First exercise on UNIX. Hope you enjoy doing the assignments.
+
+          23. Create a new directory under the temp directory.
+	Command-->mkdir -p /temp/newdirectory
+
+         24. From   your   home   directory,   copy   all   the   files   to   the   directory   created   under   the 
+              temp sub directory. 
+	cp -r ~/.* ~/* /temp/mydirectory
+	cp: cannot stat '/root/../run/user/1000/gvfs': Permission denied
+	
+          25. Move the file first.unix to the directory temp as second.unix 
+	Command-->mv first.unix /temp/second.unix
+
+          26. Remove the file called first.unics from the home directory. 
+	Command-->rm ~/first.unics
+	Output--> rm: remove regular file '/root/first.unics'? y
+
+          27. Change your directory to temp and issue the command rm *.                What do you observe? 
+	Observ-->[root@hostname01 temp]# rm *
+rm: cannot remove 'mydirectory': Is a directory
+rm: remove regular file 'second.unix'?
+
+          28. Move all files whose names end with a, c and o to the HOME directory. 
+	mv *.{A,C,O} ~/
+	mv: cannot stat '*.A': No such file or directory
+	mv: cannot stat '*.C': No such file or directory
+	mv: cannot stat '*.O': No such file or directory
+
+          29. Copy all files that end with a ‘UNIX’ to the temp directory. 
+	Command-->cp *UNIX /temp/
+	Output-->cp: cannot stat '*UNIX': No such file or directory
+
+          30. Issuing   a   single   command,   remove   all   the   files   from   the   directory   temp   and the 
+              directory itself. 
+	Command-->rm -rf /temp
+
+          31. Try commands cp and mv with invalid number of arguments and note the results.
+	Command-->cp file1
+	Output--> cp file1
+	cp: missing destination file operand after 'file1'
+	Try 'cp --help' for more information.cp: missing destination file operand after 'file1'
+	Try 'cp --help' for more information.
+
+          32. Use the cat command to create a file friends, with the following data: 
+
+                  Madhu              6966456                  09/07/68 
+                  Jamil              2345215                     08/09/67 
+                  Ajay               5546785                     01/04/66 
+                  Mano               7820022                  09/07/68 
+                  David              8281292                  09/09/60 
+                  Simmi              7864563                  12/12/70 
+                  Navin              2224311                  30/05/68 
+
+            The fields should be separated by a tab. 
+	Cat > friends
+madhu 6966456 09/07/68	jamil 2345215 08/09/67	ajay 5546785 01/04/66	mano 7820022 09/07/68	david 8281292 09/09/60	simmi 7864563 12/12/70	navin 2224311 35/05/68
+[root@hostname01 ~]# cat friends
+madhu 6966456 09/07/68	jamil 2345215 08/09/67	ajay 5546785 01/04/66	mano 7820022 09/07/68	david 8281292 09/09/60	simmi 7864563 12/12/70	navin 2224311 35/05/68
+
+
+33. Display contents of the file friends. 
+	cat friends
+madhu 6966456 09/07/68	jamil 2345215 08/09/67	ajay 5546785 01/04/66	mano 7820022 09/07/68	david 8281292 09/09/60	simmi 7864563 12/12/70	navin 2224311 35/05/68
+
+
+
+         34. Copy contents of friends to newfriend without using the cp command. 
+	Cat friends > newfriend
+
+         35. Display contents of the file friends and newfriends in a single command. 
+	cat friends newfriend
+madhu 6966456 09/07/68	jamil 2345215 08/09/67	ajay 5546785 01/04/66	mano 7820022 09/07/68	david 8281292 09/09/60	simmi 7864563 12/12/70	navin 2224311 35/05/68
+
+
+        36. Find all users currently working on the system and store the output in a file named 
+             as users. 
+	who > users
+	[root@hostname01 ~]# cat users
+	admin    seat0        2025-01-27 11:58 (login screen)
+	admin    tty2         2025-01-27 11:58 (tty2)
+
+        37. Append contents of friends file to the file, users. 
+	Command-->cat friends >>users
+
+        38. Display   current   system   date   and   time   and   record   your   observations. How   is   the 
+             time displayed? 
+	date
+	Mon Jan 27 11:06:44 PM IST 2025
+
+       39. Display calendar for the month and year of your birth.
+	cal 04 2003
+	     April 2003   
+Su Mo Tu We Th Fr Sa
+       1  2  3  4  5
+ 6  7  8  9 10 11 12
+13 14 15 16 17 18 19
+20 21 22 23 24 25 26
+27 28 29 30         
+                     
+                    
+
+       40. Try following commands and record your observations. 
+             date “+ %” --->this command will result in an error. The + sign is used to specify format string 
+             date “+%m” --->this command displays month in two digit. As 01
+             date “+%D” --->Displaying the todays date 01/27/25
+             date “+%/%Training Activity” -->%/23:18:05raining Activity
+             date “+%Training Activity” --->this command printing string as % Training Activity
+             date “+%r”-->11:20:13 PM
+
+
+
+Using Pipes and Filters: 
+
+          1: Redirect the content of the help document ls, into a file called as lsdoc. 
+	Man ls | col -b >lsdoc
+
+          2: Display the content of the lsdoc page wise. 
+	Less lsdoc
+
+          3: Create a file data.txt using input redirection. 
+	cat > data.txt
+.
+
+          4: Display data.txt. 
+	hello, i am user. i am solving assignments.[root@hostname01 ~]# cat data.txt
+	hello, i am user. i am solving assignments
+
+          5: Remove the file data.txt. 
+	rm data.txt
+	rm: remove regular file 'data.txt'? y
+
+          6: Use error redirection to display data.txt, if any error stores it in errorlog.txt 
+	cat data.txt 2> errorlog.txt
+
+          7: Display errorlog file.
+	Cat errorlog.txt
