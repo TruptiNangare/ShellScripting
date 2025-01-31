@@ -1,0 +1,353 @@
+1	Write a shell script which will generate the O/P as follows
+
+*
+**
+***
+****
+	Command = vim script
+	In Bash = #!/bin/bash
+                 for((i=1;i<=4;i++))
+      	    do
+                  for((j=1;j<=i; j++))
+                do echo -n “*”
+                done
+     	    echo
+                done
+	Command to give permission=chmod +x script
+	Command to run = ./script
+
+2	Accept the first name, middle name, and last name of a person in variables fname, mname and lname respectively. Greet the person (take his full name) using appropriate message. 
+	Command=vim greet
+	Script= #!/bin/bash
+echo "Enter the First Name "
+read FNAME
+echo "Enter the Middle Name "
+read MNAME
+echo "Enter the Last Name "
+read LNAME
+Display the greeting message
+echo "hello , $FNAME $MNAME $LNAME ! Welcome to assignment"
+	Command to give permission=chmod +x greet
+	Command to run = ./greet
+	Output=  
+	Enter the First Name
+trupti
+Enter the Middle Name
+babasaheb
+Enter the Last Name
+nangare
+hello ,trupti babasaheb nangare! Welcome to assignment
+
+
+3	Display the name of files in the current directory along with the names of files with maximum & minimum size. The file size is considered in bytes.
+	Command=vim files
+	Script= 
+1.	#!/bin/bash
+2.	echo "fiels in current directory:"
+3.	ls -l --block-size=1 | awk '{print $9, $5}' | tail -n +2
+4.	
+5.	Large_file=$(ls -S |head -1)
+6.	
+7.	small_file=$(ls -Sr | head -1)
+8.	echo ""
+9.	echo "large file : $large_file"
+10.	echo "small file : $small_file"
+
+	Command to give permission and run=chmod +x files
+                                                               ./files
+	Output= 
+1.	anaconda-ks.cfg 828
+2.	cprog 6
+3.	Desktop 6
+4.	Documents 6
+5.	Downloads 6
+6.	errorlog.txt 41
+7.	files 239
+8.	friends 158
+9.	greet 190
+10.	lsdoc 7745
+11.	Music 6
+12.	newfriend 158
+13.	newfriends 158
+14.	Pictures 6
+15.	Public 6
+16.	script 92
+17.	temp 26
+18.	Templates 6
+19.	users 258
+20.	Videos 6
+21.	
+22.	large file : 
+23.	small file : Videos
+
+4	Write a script which when executed checks out whether it is a working day or not?
+(Note: Working day Mon-Fri)
+	Command=vim days
+	Script=
+#!/bin/bash
+day=$(date +%u)
+if[ "$day" -ge 1 ] &&
+[ "$day" -le 5 ]; then
+   echo "today is a  working day."
+else
+        echo " today is not a working day"
+fi
+
+	Command to give permission and run=chmod +x files
+                                                               ./files
+	Output= today is a working day
+
+
+
+5	Write a script that accepts a member into HP health club, if the weight of the person is withing the range of 30-250 Kgs.
+	Command= vim health_club
+	Run script=/health_club
+	Script=
+#!/bin/bash
+1.	 echo " Health Club!"
+2.	echo -n "enter your weight: "
+3.	read weight
+4.	if [ "$weight" -ge 30 ] && [ "$weight" -le 250 ]; then
+5.	    echo "Congratulations for membership in the HP Health Club."
+6.	else
+7.	    echo "Sorry, your weight is not within the range (30-250 Kgs) for membership."
+8.	fi
+	Output=health club
+            enter your weight:56
+Congratulations for membership in the HP Health Club.
+
+6	Write a shell script that greets the user with an appropriate message depending on the system time.
+	Script=
+o	#!/bin/bash
+	hour=$(date +"%H")
+•	if [ "$hour" -ge 5 ] && [ "$hour" -lt 12 ]; then
+•	    echo "Good Morning"
+•	elif [ "$hour" -ge 12 ] && [ "$hour" -lt 17 ]; then
+•	    echo "Good Afternoon"
+•	elif [ "$hour" -ge 17 ] && [ "$hour" -lt 21 ]; then
+•	    echo "Good Evening"
+•	else
+•	    echo "Good Night"
+•	Fi
+	Output=
+chmod +x greet_time
+[root@hostname01 ~]# ./greet_time
+Good Evening
+7	A data file file has some student records including rollno, names and subject marks. The fields are separated by a “:”. Write a shell script that accepts roll number from the user, searches it in the file and if the roll number is present - allows the user to modify name and marks in 3 subjects. 
+If the roll number is not present, display a message “Roll No Not Found”. Allow the user to modify one record at a time. 
+	Script= #!/bin/bash
+
+•	data_file="student_records.txt" # Define the data file containing student records
+•	echo -n "Enter roll number: "
+•	read rollno
+•	record=$(grep "^$rollno:" "$data_file")
+•	if [ -z "$record" ]; then
+•	    echo "Roll No Not Found"
+•	else
+•	    echo "Record Found: $record"
+•	    echo "Enter new details for Roll No: $rollno"
+•	    echo -n "Enter New Name: "
+•	    read new_name
+•	    echo -n "Enter Marks for Subject 1: "
+•	    read marks1
+•	    echo -n "Enter Marks for Subject 2: "
+•	    read marks2
+•	    echo -n "Enter Marks for Subject 3: "
+•	    read marks3
+•	    new_record="$rollno:$new_name:$marks1:$marks2:$marks3"
+•	    sed -i "s/^$rollno:.*/$new_record/" "$data_file"
+•	    echo "Record updated successfully!"
+•	fi
+	Output= chmod +x student_record
+[root@hostname01 ~]# ./student_record
+Enter roll number: 21
+Roll No Not Found
+
+
+8	Modify program 7 to accept the RollNo from the command line.
+•	#!/bin/bash
+      data_file="student_records.txt"
+if [ $# -ne 1 ]; then
+    echo "Usage: $0 <RollNo>"
+    exit 1
+fi
+
+rollno=$1
+record=$(grep "^$rollno:" "$data_file")
+
+if [ -z "$record" ]; then
+    echo "Roll No Not Found"
+else
+    echo "Record Found: $record"
+    echo "Enter new details for Roll No: $rollno"
+    echo -n "Enter New Name: "
+    read new_name
+    echo -n "Enter Marks for Subject 1: "
+    read marks1
+    echo -n "Enter Marks for Subject 2: "
+    read marks2
+    echo -n "Enter Marks for Subject 3: "
+    read marks3
+    new_record="$rollno:$new_name:$marks1:$marks2:$marks3"
+    sed -i "s/^$rollno:.*/$new_record/" "$data_file"
+
+    echo "Record updated successfully!"
+fi
+•	script executable:
+chmod +x student_record.sh
+•	Run the script:
+./student_record.sh 21
+•	[root@hostname01 ~]#./student_record.sh 21
+ Record Found: 21:trup:78:85:90 
+Enter new details for Roll No: 21 
+Enter New Name: asdf
+Enter Marks for Subject 1: 10 
+Enter Marks for Subject 2: 20 
+Enter Marks for Subject 3: 40
+ Record updated successfully!
+•	[root@hostname01 ~]# ./student_record.sh 99 Roll No Not Found
+
+9	Modify the program 7 to accept the RollNo and display the record and ask for delete confirmation. Once confirmed delete the record and update the data file.
+•	#!/bin/bash
+data_file="student_records.txt"
+echo -n "Enter roll number to delete: "
+read rollno
+record=$(grep "^$rollno:" "$data_file")
+
+if [ -z "$record" ]; then
+    echo "Roll No Not Found"
+else
+    echo "Record Found: $record"
+    echo -n "Are you sure you want to delete this record? (y/n): "
+    read confirm
+
+    if [ "$confirm" == "y" ] || [ "$confirm" == "Y" ]; then
+        sed -i "/^$rollno:/d" "$data_file"
+        echo "Record deleted successfully!"
+    else
+        echo "Deletion cancelled."
+    fi
+fi
+
+10	Write a script that takes a command line argument and reports on its file type (regular file, directory file, etc.). For more than one argument generate error message.  
+	Script=
+#!/bin/bash
+
+# Check if the number of arguments is not exactly 1
+if [ $# -ne 1 ]; then
+    echo "Error: Please provide exactly one argument."
+    exit 1
+fi
+
+# Store the argument in a variable
+file_path=$1
+
+# Check if the file exists
+if [ ! -e "$file_path" ]; then
+    echo "Error: '$file_path' does not exist."
+    exit 1
+fi
+
+# Check the type of file
+if [ -f "$file_path" ]; then
+    echo "'$file_path' is a regular file."
+elif [ -d "$file_path" ]; then
+    echo "'$file_path' is a directory."
+elif [ -L "$file_path" ]; then
+    echo "'$file_path' is a symbolic link."
+else
+    echo "'$file_path' is another type of file."
+Fi
+	Output= Error: Please provide exactly one argument.
+
+11	Add some student records in the “student” file manually. The fields to be considered are “RollNo”, “Name”, “Marks_Hindi”, “Marks_Maths”, “Marks_Physics”.
+ Write a script which does the following 
+a	If the roll number already exists, then store the record and the following message 
+“roll number exists” in a log file “log1”.
+b	If the marks in the subjects is not in the range of 1 – 99 then store such a record followed by a message “marks out of range” in “log1”
+c	If the data is valid, the calculate total, percentage, grade and display on the terminal
+
+#!/bin/bash
+
+student_file="student"
+
+log_file="log1"
+
+
+calculate_grade() {
+    if (( $(echo "$1 >= 90" | bc -l) )); then
+        echo "Grade: A"
+    elif (( $(echo "$1 >= 75" | bc -l) )); then
+        echo "Grade: B"
+    elif (( $(echo "$1 >= 50" | bc -l) )); then
+        echo "Grade: C"
+    else
+        echo "Grade: F"
+    fi
+}
+if [ ! -f "$student_file" ]; then
+    echo "Student file not found. Creating a new one."
+    touch "$student_file"
+fi
+
+echo "Enter RollNo: "
+read roll_no
+echo "Enter Name: "
+read name
+echo "Enter Marks in Hindi: "
+read marks_hindi
+echo "Enter Marks in Maths: "
+read marks_maths
+echo "Enter Marks in Physics: "
+read marks_physics
+if grep -q "$roll_no" "$student_file"; then
+    echo "Roll number $roll_no exists." >> "$log_file"
+    echo "Roll number exists. Record not added."
+    exit 1
+fi
+if [ "$marks_hindi" -lt 1 ] || [ "$marks_hindi" -gt 99 ] || \
+   [ "$marks_maths" -lt 1 ] || [ "$marks_maths" -gt 99 ] || \
+   [ "$marks_physics" -lt 1 ] || [ "$marks_physics" -gt 99 ]; then
+    echo "$roll_no $name $marks_hindi $marks_maths $marks_physics - Marks out of range" >> "$log_file"
+    echo "Marks out of range. Record not added."
+    exit 1
+fi
+
+total=$((marks_hindi + marks_maths + marks_physics))
+percentage=$(echo "scale=2; $total / 3" | bc)
+echo "$roll_no $name $marks_hindi $marks_maths $marks_physics" >> "$student_file"
+
+echo "Student record added successfully."
+echo "RollNo: $roll_no"
+echo "Name: $name"
+echo "Marks in Hindi: $marks_hindi"
+echo "Marks in Maths: $marks_maths"
+echo "Marks in Physics: $marks_physics"
+echo "Total: $total"
+echo "Percentage: $percentage%"
+
+calculate_grade "$percentage"
+
+
+	output=
+chmod +x student
+[root@hostname01 ~]# ./student
+Enter RollNo: 
+12
+Enter Name: 
+trupti
+Enter Marks in Hindi: 
+70
+Enter Marks in Maths: 
+60
+Enter Marks in Physics: 
+88
+Student record added successfully.
+RollNo: 12
+Name: trupti
+Marks in Hindi: 70
+Marks in Maths: 60
+Marks in Physics: 88
+Total: 218
+Percentage: 72.66%
+Grade: C
