@@ -1,0 +1,647 @@
+       Working with a Vi Editor:
+
+        1: Create a file using vi. Enter the following text: 
+         A network is a group of computers that can communicate with each other, share 
+         resources, and access remote hosts or other networks. Netware is a computer network 
+         operating system designed to connect, manage, and maintain a network and its 
+         services. Some of the network services are Netware Directory Services (NDS), file 
+         system, printing and security. 
+         a.   Change the word “Netware” in the second line to “Novell Netware”. 
+         b.   Insert   the   text   “(such   as   hard   disks   and   printers)”   after   “share   resources”   in   the 
+              first line. 
+         c.   Append the following text to the file: 
+              “Managing NDS is a fundamental administrator role because NDS provides a single 
+              point for accessing and managing most network resources.” 
+
+1.	Vim network_info.txt
+2.	In vim-->Change "Netware" in the second line to "Novell Netware"
+                 '2s/Netware/Novell Netware/' $FILE
+3.	insert text after "share resources"
+4.	's/share resources/share resources (such as hard disks and printers)/' $FILE
+5.	Append the additional text to the file
+echo "Managing NDS is a fundamental administrator role because NDS provides a single 
+point for accessing and managing most network resources." >> $FILE
+
+
+Working shell Change "Netware" in the second line to "Novell Netware"
+1.	Type some text on the shell separated by space 
+           1: Move cursor one word back 
+    		ctrl+b
+
+           2: Move cursor one word forward 
+ctrl+f
+
+           3: Move cursor to the first character 
+ctrl+a
+           4: Move cursor to the end 
+ctrl+e
+           5: Delete test from second word to last character 
+alt+f ctrl+k
+
+           6: Delete the current line 
+ctrl+u
+
+
+         2:   In  lab  4  we   have    created    a  file  errorlog.txt.  Display   it  using  cat   command      using 
+•	command completion. 
+•	[root@hostname01 ~]# cat errorlog.txt
+•	[root@hostname01 ~]# ls
+•	anaconda-ks.cfg  chap2  chapD  data.txt  Documents  emp1  errorlog.txt  lsdoc  newfile.txt  Pictures  Templates  users
+•	chap1            chapc  C_k    Desktop   Downloads  emp2  friends       Music  newfriends   Public    tgh.txt    Videos
+         3: Display history of command used so far. 
+#history
+1  hostnamectl host01
+    2  hostname host01
+    3  yum -y update
+    4  init 0
+    5  hostnamectl set-hostname hostname01
+    6  hostnamectl
+    7  ipconfig
+    8  ifconfig
+    9  clear
+   10  yum update -y
+   11  uname -a
+   12  hostnamectl
+   13  cat /etc/os-release 
+   14  yum update -y
+   15  init 6
+   16  init 0
+   17  df  -kh
+   18  init 0
+   19  echo $HOME
+   20  cd ~
+   21  pwd
+   23  echo $PATH
+   24  echo $USER
+   25  pwd
+   26  echo $HOME
+   27  pwd
+   28  echo $USER
+   29  whomi
+   30  pwd
+   31  echo $HOME
+   32  whoami
+   33  echo $USER
+   34  pwd
+   35  echo $HOME
+   36  whoami
+   37  echo $USER
+   38  ls -a
+   39  ls
+   40  ls -l
+   41  pwd
+   42  echo $HOME
+   43  whomi
+   44  whoami
+   45  echo $USER
+   46  ls -a
+   47  ls
+   48  ls -l
+   49  touch chap1 chap2 chap3 chap4 chapc epm1 emp2 emp3
+   50  ls
+   51  ls  | grep "chap"
+   52  ls chap[0-9 a-z]*
+   53  touch chapD chapJ
+   54  ls
+   55  ls | grep "chap"
+   56  ls chap[0-9a-z]*
+   57  ls
+   58  ls
+   59  rmdir chap1 chap2 chap3 chap4 chapc chapD chapJ emp3 emp1 emp2
+   60  ls
+   61  rm chap1
+   62  rm chap2
+   63  rm chap3
+   64  rm chap4
+   65  rm chapc
+   66  rm chapD
+   67  rm chapJ
+   68  c
+   69  y
+   70  ls
+   71  rm emp1
+   72  y
+   73  rm emp2
+   74  rm emp3
+   75  rm emp1
+   76  y
+   77  ls
+   78  rm emp1
+   79  rm empl
+   80  rm epm1
+   81  mkdir ~/C_k
+   82  ls
+   83  vi newfile.txt
+   84  bash --version
+   85  history
+   86  vi tgh.txt
+   87  ;
+   88  :
+   89  vi newfile.txt
+   90  echo "this sentence1" "This is sentence2"
+   91  vi newfile.txt 
+   92  echo "Line to try curosr movement"
+   93  cat errorlog.txt
+   94  ls
+   95  history
+         4: Search ls command in history file 
+# history | grep ls
+   38  ls -a
+   39  ls
+   40  ls -l
+   46  ls -a
+   47  ls
+   48  ls -l
+   50  ls
+   51  ls  | grep "chap"
+   52  ls chap[0-9 a-z]*
+   54  ls
+   55  ls | grep "chap"
+   56  ls chap[0-9a-z]*
+    57  history | grep ls
+         5: Repeat the last command rd 
+•	[root@hostname01 ~]# !!
+         6: Execute 3   command from history file. 
+•	[root@hostname01 ~]# ls
+anaconda-ks.cfg  chap2  chapD  data.txt  Documents  emp1  errorlog.txt  lsdoc  newfile.txt  Pictures  Templates  users
+chap1            chapc  C_k    Desktop   Downloads  emp2  friends       Music  newfriends   Public    tgh.txt    Videos
+[root@hostname01 ~]# ls -l chap1
+-rwxr--r--. 1 root root 0 Jan 30 20:30 chap1
+[root@hostname01 ~]# echo $USER
+root
+         7: What are the different shells available.
+•	[root@hostname01 ~]# cat /etc/shells
+/bin/sh
+/bin/bash
+/usr/bin/sh
+/usr/bin/bash
+
+Understanding access permissions
+
+         7.1: Create an empty file “demofile” and perform following instruction 
+•	[root@hostname01 ~]# touch demofile
+[root@hostname01 ~]# ls -l demofile
+rw-r--r--. 1 root root 0 Jan 30 20:41 demofile
+1.	Revoke read permission from owner and use cat command. 
+rw-r--r--. 1 root root 0 Jan 30 20:41 demofile
+                      2.   Revoke write permission from owner and open using vi 
+                          editor and add some contain in it. 
+[root@hostname01 ~]# chmod u-w demofile
+[root@hostname01 ~]# ls-l demofile
+bash: ls-l: command not found...
+[root@hostname01 ~]# vi demofile
+2.	Add read and write permission to owner. 
+[root@hostname01 ~]# chmod u+rw demofile
+[root@hostname01 ~]# ls-l demofile
+bash: ls-l: command not found...
+[root@hostname01 ~]# ls -l demofile
+-rw-r--r--. 1 root root 1 Jan 30 20:41 demofile
+                      4.   Revoke write and execute from other and group 
+[root@hostname01 ~]# chmod go-wx demofile
+[root@hostname01 ~]# ls -l demofile
+-rw-r--r--. 1 root root 1 Jan 30 20:41 demofile
+                      5.   Add write permission to group only 
+[root@hostname01 ~]# chmod g+w demofile
+[root@hostname01 ~]# ls -l demofile
+-rw-rw-r--. 1 root root 1 Jan 30 20:41 demofile
+                      6.   Assign read permission to all 
+[root@hostname01 ~]# chmod ugo+r demofile
+[root@hostname01 ~]# ls -l demofile
+-rw-rw-r--. 1 root root 1 Jan 30 20:42 demofile
+                      7.   Revoke read permission from others 
+[root@hostname01 ~]# chmod o-r demofile
+[root@hostname01 ~]# ls -l demofile
+-rw-rw----. 1 root root 1 Jan 30 20:42 demofile
+                      8.   Give the execute permission for the user for a file chap1 
+rw----. 1 root root 1 Jan demofile
+[root@hostname01 ~]# chmod u+x chap1
+[root@hostname01 ~]# ls -l chap1
+-rwxr--r--. 1 root root 0 Jan 30chap1
+
+         9.   Give the execute permission for user, group and others for a file add.c 
+[root@hostname01 ~]# touch add.c
+[root@hostname01 ~]# chmod a+x add.c
+[root@hostname01 ~]# ls -l add.c
+-rwxr-xr-x. 1 root root 0 Jan 30 20:42 add.c
+[root@hostname01 ~]# touch aa.c
+
+                      10. Remove the execute permission from user, give read permission to 
+                          group and others for a file aa.c 
+[root@hostname01 ~]# chmod go+r aa.c
+[root@hostname01 ~]# ls -l aa.c
+-rw-r--r--. 1 root root 0 Jan 30 20:42 aa.c
+
+                      11. Give execute permission for users for a.c, kk.c, nato and myfile using 
+                          single command 
+[root@hostname01 ~]# touch a.c kk.c nato myfile
+[root@hostname01 ~]# chmod u+x a.c kk.c nato myfile
+[root@hostname01 ~]# ls -l a.c kk.c nato myfile
+-rwxr--r--. 1 root root 0 Jan 30 20:46 a.c
+-rwxr--r--. 1 root root 0 Jan 30 20:46 kk.c
+-rwxr--r--. 1 root root 0 Jan 30 20:46 myfile
+-rwxr--r--. 1 root root 0 Jan 30 20:46 nato
+
+         7.2: Create an directory “demo” and copy /etc/passwd file in it 
+[admin@hostname01 Desktop]$ mkdir demo
+
+[admin@hostname01 Desktop]$ cp /etc/passwd demo/
+1.	Display contents of demo 
+[admin@hostname01 Desktop]$ ls demo
+passwd
+                      2.   Revoke read permission from demo directory and use ls 
+                          command on it 
+   [admin@hostname01 Desktop]$ chmod -r demo
+[admin@hostname01 Desktop]$ ls demo
+ls: cannot open directory 'demo': Permission denied
+                      3.   Revoke write permission from demo directory and try to copy 
+                          /etc/profile file in it 
+[admin@hostname01 Desktop]$ chmod -w demo 
+[admin@hostname01 Desktop]$ cp /etc/profile demo/
+cp: cannot create regular file 'demo/profile': Permission denied
+3.	Delete passwd file from demo directory 
+[admin@hostname01 Desktop]$ rm demo/passwd
+rm: cannot remove 'demo/passwd': Permission denied
+                      5.   Revoke execute permission from demo directory and try cd 
+                          command on demo.
+[admin@hostname01 Desktop]$ chmod -x demo
+[admin@hostname01 Desktop]$ cd demo
+bash: cd: demo: Permission denied
+        Using Process-Related Commands 
+ 
+1.	Find out the PID of the processes that are activated by you 
+ps -u $USER
+[admin@hostname01 Desktop]$ ps -u $USER
+    PID TTY          TIME CMD
+   2255 ?        00:00:01 systemd
+   2257 ?        00:00:00 (sd-pam)
+   2273 ?        00:00:00 gnome-keyring-d
+   2277 tty2     00:00:00 gdm-wayland-ses
+   2279 ?        00:00:00 dbus-broker-lau
+   2282 ?        00:00:01 dbus-broker
+   2284 tty2     00:00:00 gnome-session-b
+   2322 ?        00:00:00 gnome-session-c
+   2324 ?        00:00:00 gnome-session-b
+   2342 ?        00:06:44 gnome-shell
+   2359 ?        00:00:00 gvfsd
+   2364 ?        00:00:00 gvfsd-fuse
+   2371 ?        00:00:00 at-spi-bus-laun
+   2377 ?        00:00:00 dbus-broker-lau
+   2378 ?        00:00:00 dbus-broker
+   2391 ?        00:00:00 xdg-permission-
+   2393 ?        00:00:00 gnome-shell-cal
+   2410 ?        00:00:01 pipewire
+   2411 ?        00:00:01 wireplumber
+   2414 ?        00:00:01 pipewire-pulse
+   2417 ?        00:00:00 evolution-sourc
+   2428 ?        00:00:00 dconf-service
+   2447 ?        00:00:00 gvfs-udisks2-vo
+   2450 ?        00:00:00 goa-daemon
+   2464 ?        00:00:00 gvfs-mtp-volume
+   2473 ?        00:00:00 evolution-calen
+   2475 ?        00:00:17 goa-identity-se
+   2480 ?        00:00:00 gvfs-gphoto2-vo
+   2493 ?        00:00:00 gvfs-goa-volume
+   2507 ?        00:00:00 evolution-addre
+   2527 ?        00:00:00 gjs
+   2528 ?        00:00:00 at-spi2-registr
+   2535 ?        00:00:00 gsd-a11y-settin
+   2538 ?        00:00:01 gsd-color
+   2539 ?        00:00:00 gsd-datetime
+   2543 ?        00:00:03 gsd-housekeepin
+   2544 ?        00:00:00 gsd-keyboard
+   2547 ?        00:00:00 gsd-media-keys
+   2548 ?        00:00:00 gsd-power
+   2549 ?        00:00:00 gsd-print-notif
+   2555 ?        00:00:00 gsd-rfkill
+   2561 ?        00:00:00 gsd-screensaver
+   2563 ?        00:00:00 gsd-sharing
+   2566 ?        00:00:08 gsd-smartcard
+   2569 ?        00:00:00 gsd-disk-utilit
+   2574 ?        00:00:00 gsd-sound
+   2582 ?        00:00:00 gsd-usb-protect
+   2591 ?        00:00:00 evolution-alarm
+   2592 ?        00:00:00 gsd-wacom
+   2602 ?        00:00:12 gnome-software
+   2638 ?        00:01:51 vmtoolsd
+   2654 ?        00:00:00 gsd-printer
+   2655 ?        00:00:00 gjs
+   2737 ?        00:00:00 Xwayland
+   2791 ?        00:00:00 gvfsd-trash
+   2804 ?        00:00:03 xdg-desktop-por
+   2817 ?        00:00:00 xdg-document-po
+   2835 ?        00:00:03 xdg-desktop-por
+   2844 ?        00:00:27 ibus-daemon
+   2846 ?        00:00:03 gsd-xsettings
+   2865 ?        00:00:00 ibus-dconf
+   2866 ?        00:00:05 ibus-extension-
+   2869 ?        00:00:00 ibus-x11
+   2875 ?        00:00:00 ibus-portal
+   2905 ?        00:00:02 xdg-desktop-por
+   2914 ?        00:00:08 ibus-engine-sim
+   3117 ?        00:00:00 gvfsd-metadata
+   9561 ?        00:00:00 gnome-terminal-
+   9579 pts/0    00:00:00 bash
+   9611 pts/0    00:00:00 ps
+
+
+2.	Find out the information about all the processes that are currently active 
+[admin@hostname01 Desktop]$ ps aux
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  0.0  0.2 173964 16660 ?        Ss   Jan28   0:07 /usr/lib/systemd/systemd rhgb --switched-root --system --deserialize 31
+root           2  0.0  0.0      0     0 ?        S    Jan28   0:00 [kthreadd]
+root           3  0.0  0.0      0     0 ?        S    Jan28   0:00 [pool_workqueue_]
+root           4  0.0  0.0      0     0 ?        I<   Jan28   0:00 [kworker/R-rcu_g]
+root           5  0.0  0.0      0     0 ?        I<   Jan28   0:00 [kworker/R-sync_]
+root           6  0.0  0.0      0     0 ?        I<   Jan28   0:00 [kworker/R-slub_]
+root           7  0.0  0.0      0     0 ?        I<   Jan28   0:00 [kworker/R-netns]
+root           9  0.0  0.0      0     0 ?        I<   Jan28   0:00 [kworker/0:0H-events_highpri]
+root          10  0.0  0.0      0     0 ?        I    Jan28   0:00 [kworker/u512:0-events_unbound]
+root          11  0.0  0.0      0     0 ?        I<   Jan28   0:00 [kworker/R-mm_pe]
+root          12  0.0  0.0      0     0 ?        I    Jan28   0:00 [kworker/u512:1-netns]
+root          13  0.0  0.0      0     0 ?        I    Jan28   0:00 [rcu_tasks_kthre]
+root          14  0.0  0.0      0     0 ?        I    Jan28   0:00 [rcu_tasks_rude_]
+root          15  0.0  0.0      0     0 ?        I    Jan28   0:00 [rcu_tasks_trace]
+root          16  0.0  0.0      0     0 ?        S    Jan28   0:00 [ksoftirqd/0]
+root          17  0.0  0.0      0     0 ?        I    Jan28   0:04 [rcu_preempt]
+root          18  0.0  0.0      0     0 ?        S    Jan28   0:00 [rcu_exp_par_gp_]
+root          19  0.0  0.0      0     0 ?        S    Jan28   0:00 [rcu_exp_gp_kthr]
+root          20  0.0  0.0      0     0 ?        S    Jan28   0:00 [migration/0]
+root          21  0.0  0.0      0     0 ?        S    Jan28   0:00 [idle_inject/0]
+root          23  0.0  0.0      0     0 ?        S    Jan28   0:00 [cpuhp/0]
+root          24  0.0  0.0      0     0 ?        S    Jan28   0:00 [cpuhp/1]
+root          25  0.0  0.0      0     0 ?        S    Jan28   0:00 [idle_inject/1]
+root          26  0.0  0.0      0     0 ?        S    Jan28   0:02 [migration/1]
+root          27  0.0  0.0      0     0 ?        S    Jan28   0:00 [ksoftirqd/1]
+root          30  0.0  0.0      0     0 ?        S    Jan28   0:00 [cpuhp/2]
+root          31  0.0  0.0      0     0 ?        S    Jan28   0:00 [idle_inject/2]
+root          32  0.0  0.0      0     0 ?        S    Jan28   0:02 [migration/2]
+root          33  0.0  0.0      0     0 ?        S    Jan28   0:00 [ksoftirqd/2]
+root          35  0.0  0.0      0     0 ?        I<   Jan28   0:00 [kworker/2:0H-events_highpri]
+root          36  0.0  0.0      0     0 ?        S    Jan28   0:00 [cpuhp/3]
+root          37  0.0  0.0      0     0 ?        S    Jan28   0:00 [idle_inject/3]
+root          38  0.0  0.0      0     0 ?        S    Jan28   0:02 [migration/3]
+root          39  0.0  0.0      0     0 ?        S    Jan28   0:00 [ksoftirqd/3]
+root          49  0.0  0.0      0     0 ?        S    Jan28   0:00 [kdevtmpfs]
+root          50  0.0  0.0      0     0 ?        I<   Jan28   0:00 [kworker/R-inet_]
+root          51  0.0  0.0      0     0 ?        S    Jan28   0:00 [kauditd]
+root          52  0.0  0.0      0     0 ?        S    Jan28   0:00 [khungtaskd]
+root          53  0.0  0.0      0     0 ?        S    Jan28   0:00 [oom_reaper]
+root          54  0.0  0.0      0     0 ?        I<   Jan28   0:00 [kworker/R-write]
+root          55  0.0  0.0      0     0 ?        S    Jan28   0:01 [kcompactd0]
+root          56  0.0  0.0      0     0 ?        SN   Jan28   0:00 [ksmd]
+root          57  0.0  0.0      0     0 ?        SN   Jan28   0:03 [khugepaged]
+root          58  0.0  0.0      0     0 ?        I<   Jan28   0:00 [kworker/R-crypt]
+root          59  0.0  0.0      0     0 ?        I<   Jan28   0:00 [kworker/R-kinte]
+root          60  0.0  0.0      0     0 ?        I<   Jan28   0:00 [kworker/R-kbloc]
+root          61  0.0  0.0      0     0 ?        S    Jan28   0:00 [irq/9-acpi]
+root          64  0.0  0.0      0     0 ?        I<   Jan28   0:00 [kworker/R-tpm_d]
+root          65  0.0  0.0      0     0 ?        I<   Jan28   0:00 [kworker/R-md]
+root          66  0.0  0.0      0     0 ?        I<   Jan28   0:00 [kworker/R-md_bi]
+root          67  0.0  0.0      0     0 ?        I<   Jan28   0:00 [kworker/R-edac-]
+root          68  0.0  0.0      0     0 ?        S    Jan28   0:00 [watchdogd]
+root          70  0.0  0.0      0     0 ?        S    Jan28   0:00 [kswapd0]
+root          76  0.0  0.0      0     0 ?        I<   Jan28   0:00 [kworker/R-kthro]
+root          80  0.0  0.0      0     0 ?        S    Jan28   0:00 [irq/24-pciehp]
+root          81  0.0  0.0      0     0 ?        S    Jan28   0:00 [irq/25-pciehp]
+root          82  0.0  0.0      0     0 ?        S    Jan28   0:00 [irq/26-pciehp]
+root          83  0.0  0.0      0     0 ?        S    Jan28   0:00 [irq/27-pciehp]
+root          84  0.0  0.0      0     0 ?        S    Jan28   0:00 [irq/28-pciehp]
+root          85  0.0  0.0      0     0 ?        S    Jan28   0:00 [irq/29-pciehp]
+root          86  0.0  0.0      0     0 ?        S    Jan28   0:00 [irq/30-pciehp]
+root          87  0.0  0.0      0     0 ?        S    Jan28   0:00 [irq/31-pciehp]
+root          88  0.0  0.0      0     0 ?        S    Jan28   0:00 [irq/32-pciehp]
+root          89  0.0  0.0      0     0 ?        S    Jan28   0:00 [irq/33-pciehp]
+root          90  0.0  0.0      0     0 ?        S    Jan28   0:00 [irq/34-pciehp]
+root          91  0.0  0.0      0     0 ?        S    Jan28   0:00 [irq/35-pciehp]
+root          92  0.0  0.0      0     0 ?        S    Jan28   0:00 [irq/36-pciehp]
+root          93  0.0  0.0      0     0 ?        S    Jan28   0:00 [irq/37-pciehp]
+root          94  0.0  0.0      0     0 ?        S    Jan28   0:00 [irq/38-pciehp]
+root          95  0.0  0.0      0     0 ?        S    Jan28   0:00 [irq/39-pciehp]
+root          96  0.0  0.0      0     0 ?        S    Jan28   0:00 [irq/40-pciehp]
+root          97  0.0  0.0      0     0 ?        S    Jan28   0:00 [irq/41-pciehp]
+root          98  0.0  0.0      0     0 ?        S    Jan28   0:00 [irq/42-pciehp]
+root          99  0.0  0.0      0     0 ?        S    Jan28   0:00 [irq/43-pciehp]
+root         100  0.0  0.0      0     0 ?        S    Jan28   0:00 [irq/44-pciehp]
+root         101  0.0  0.0      0     0 ?        S    Jan28   0:00 [irq/45-pciehp]
+root         102  0.0  0.0      0     0 ?        S    Jan28   0:00 [irq/46-pciehp]
+root         103  0.0  0.0      0     0 ?        S    Jan28   0:00 [irq/47-pciehp]
+root         104  0.0  0.0      0     0 ?        S    Jan28   0:00 [irq/48-pciehp]
+root         105  0.0  0.0      0     0 ?        S    Jan28   0:00 [irq/49-pciehp]
+root         106  0.0  0.0      0     0 ?        S    Jan28   0:00 [irq/50-pciehp]
+root         107  0.0  0.0      0     0 ?        S    Jan28   0:00 [irq/51-pciehp]
+root         108  0.0  0.0      0     0 ?        S    Jan28   0:00 [irq/52-pciehp]
+root         109  0.0  0.0      0     0 ?        S    Jan28   0:00 [irq/53-pciehp]
+root         110  0.0  0.0      0     0 ?        S    Jan28   0:00 [irq/54-pciehp]
+root         111  0.0  0.0      0     0 ?        S    Jan28   0:00 [irq/55-pciehp]
+root         112  0.0  0.0      0     0 ?        I<   Jan28   0:00 [kworker/R-acpi_]
+root         113  0.0  0.0      0     0 ?        I<   Jan28   0:00 [kworker/R-kmpat]
+root         114  0.0  0.0      0     0 ?        I<   Jan28   0:00 [kworker/R-kalua]
+root         116  0.0  0.0      0     0 ?        I<   Jan28   0:00 [kworker/R-mld]
+root         117  0.0  0.0      0     0 ?        I<   Jan28   0:00 [kworker/1:1H-kblockd]
+root         118  0.0  0.0      0     0 ?        I<   Jan28   0:00 [kworker/R-ipv6_]
+root         128  0.0  0.0      0     0 ?        I<   Jan28   0:00 [kworker/R-kstrp]
+root         132  0.0  0.0      0     0 ?        I<   Jan28   0:00 [kworker/u515:0]
+root         133  0.0  0.0      0     0 ?        I<   Jan28   0:00 [kworker/u516:0-ttm]
+root         134  0.0  0.0      0     0 ?        I<   Jan28   0:00 [kworker/u517:0-ttm]
+root         242  0.0  0.0      0     0 ?        I<   Jan28   0:00 [kworker/0:1H
+root         244  0.0  0.0      0     0 ?        I<   Jan28   0:00 [kworker/2:1H
+root         451  0.0  0.0      0     0 ?        I<   Jan28   0:00 [kworker/R-mp
+root         452  0.0  0.0      0     0 ?        I<   Jan28   0:00 [kworker/R-mp
+root         454  0.0  0.0      0     0 ?        I<   Jan28   0:00 [kworker/R-at
+root         460  0.0  0.0      0     0 ?        S    Jan28   0:00 [scsi_eh_0]
+root         461  0.0  0.0      0     0 ?        I<   Jan28   0:00 [kworker/R-sc
+root         463  0.0  0.0      0     0 ?        S    Jan28   0:00 [scsi_eh_1]
+root         464  0.0  0.0      0     0 ?        S    Jan28   0:00 [scsi_eh_2]
+root         467  0.0  0.0      0     0 ?        I<   Jan28   0:00 [kworker/R-sc
+root         469  0.0  0.0      0     0 ?        I<   Jan28   0:00 [kworker/R-sc
+root         480  0.0  0.0      0     0 ?        S    Jan28   0:00 [irq/16-vmwgf
+root         482  0.0  0.0      0     0 ?        I<   Jan28   0:00 [kworker/R-tt
+root         517  0.0  0.0      0     0 ?        I<   Jan28   0:00 [kworker/3:2H
+root         553  0.0  0.0      0     0 ?        I<   Jan28   0:00 [kworker/R-kd
+root         560  0.0  0.0      0     0 ?        I<   Jan28   0:00 [kworker/R-kd
+root         580  0.0  0.0      0     0 ?        I<   Jan28   0:00 [kworker/R-xf
+root         581  0.0  0.0      0     0 ?        I<   Jan28   0:00 [kworker/R-xf
+root         582  0.0  0.0      0     0 ?        I<   Jan28   0:00 [kworker/R-xf
+root         583  0.0  0.0      0     0 ?        I<   Jan28   0:00 [kworker/R-xf
+root         584  0.0  0.0      0     0 ?        I<   Jan28   0:00 [kworker/R-xf
+root         585  0.0  0.0      0     0 ?        I<   Jan28   0:00 [kworker/R-xf
+root         586  0.0  0.0      0     0 ?        I<   Jan28   0:00 [kworker/R-xf
+root         587  0.0  0.0      0     0 ?        I<   Jan28   0:00 [kworker/R-xf
+root         588  0.0  0.0      0     0 ?        I<   Jan28   0:00 [kworker/R-xf
+root         589  0.0  0.0      0     0 ?        S    Jan28   0:01 [xfsaild/dm-0
+root         662  0.0  0.1  28080 12800 ?        Ss   Jan28   0:02 /usr/lib/syst
+root         682  0.0  0.0 152424  3084 ?        Ssl  Jan28   0:00 vmware-vmbloc
+root         685  0.0  0.1  38632 13784 ?        Ss   Jan28   0:01 /usr/lib/syst
+root         739  0.0  0.0      0     0 ?        I<   Jan28   0:00 [kworker/R-kd
+root         749  0.0  0.0      0     0 ?        S    Jan28   0:05 [irq/56-vmw_v
+root         750  0.0  0.0      0     0 ?        S    Jan28   0:00 [irq/57-vmw_v
+root         751  0.0  0.0      0     0 ?        S    Jan28   0:00 [irq/58-vmw_v
+root         775  0.0  0.0      0     0 ?        I<   Jan28   0:00 [kworker/R-xf
+root         776  0.0  0.0      0     0 ?        I<   Jan28   0:00 [kworker/R-xf
+root         777  0.0  0.0      0     0 ?        I<   Jan28   0:00 [kworker/R-xf
+root         778  0.0  0.0      0     0 ?        I<   Jan28   0:00 [kworker/R-xf
+root         779  0.0  0.0      0     0 ?        I<   Jan28   0:00 [kworker/R-xf
+root         780  0.0  0.0      0     0 ?        I<   Jan28   0:00 [kworker/R-xf
+root         781  0.0  0.0      0     0 ?        I<   Jan28   0:00 [kworker/R-xf
+root         782  0.0  0.0      0     0 ?        I<   Jan28   0:00 [kworker/R-xf
+root         783  0.0  0.0      0     0 ?        I<   Jan28   0:00 [kworker/R-xf
+root         784  0.0  0.0      0     0 ?        I<   Jan28   0:00 [kworker/R-xf
+root         785  0.0  0.0      0     0 ?        I<   Jan28   0:00 [kworker/R-xf
+root         786  0.0  0.0      0     0 ?        I<   Jan28   0:00 [kworker/R-xf
+root         787  0.0  0.0      0     0 ?        S    Jan28   0:00 [xfsaild/dm-2
+root         788  0.0  0.0      0     0 ?        I<   Jan28   0:00 [kworker/R-xf
+root         789  0.0  0.0      0     0 ?        I<   Jan28   0:00 [kworker/R-xf
+root         790  0.0  0.0      0     0 ?        S    Jan28   0:00 [xfsaild/sda1
+root         795  0.0  0.0  92768  4252 ?        S<sl Jan28   0:00 /sbin/auditd
+root         797  0.0  0.0   7700  3200 ?        S<   Jan28   0:00 /usr/sbin/sed
+dbus         823  0.0  0.0  10864  4808 ?        Ss   Jan28   0:00 /usr/bin/dbus
+dbus         824  0.0  0.0   8088  5424 ?        S    Jan28   0:04 dbus-broker -
+avahi        825  0.0  0.0  16736  6656 ?        Ss   Jan28   0:00 avahi-daemon:
+root         828  0.0  0.0  82764  4352 ?        Ssl  Jan28   0:10 /usr/sbin/irq
+libstor+     829  0.0  0.0   2704  1664 ?        Ss   Jan28   0:00 /usr/bin/lsmd
+root         830  0.0  0.0   2816  1920 ?        Ss   Jan28   0:00 /usr/sbin/mce
+polkitd      831  0.0  0.3 2714640 29800 ?       Ssl  Jan28   0:03 /usr/lib/polk
+rtkit        832  0.0  0.0 153996  3072 ?        SNsl Jan28   0:02 /usr/libexec/
+root         833  0.0  0.1 525512 11452 ?        Ssl  Jan28   0:00 /usr/libexec/
+root         834  0.0  0.1 448280  8348 ?        Ssl  Jan28   0:00 /usr/libexec/
+root         837  0.0  0.1  21860 11424 ?        Ss   Jan28   0:01 /usr/lib/syst
+root         840  0.0  0.1 395400 15384 ?        Ssl  Jan28   0:00 /usr/libexec/
+root         841  0.0  0.1 448792  8628 ?        Ssl  Jan28   0:00 /usr/libexec/
+root         842  0.0  0.1 233516  9984 ?        Ss   Jan28   0:00 /usr/bin/VGAu
+root         843  0.0  0.1 457520 10880 ?        Ssl  Jan28   2:59 /usr/bin/vmto
+avahi        846  0.0  0.0  16464  1944 ?        S    Jan28   0:00 avahi-daemon:
+chrony       855  0.0  0.0  84860  3888 ?        S    Jan28   0:00 /usr/sbin/chr
+root         887  0.0  0.1 391336 14424 ?        Ssl  Jan28   0:00 /usr/sbin/Mod
+root         891  0.0  0.5 351680 44580 ?        Ssl  Jan28   0:01 /usr/bin/pyth
+root         920  0.0  0.0      0     0 ?        I<   Jan28   0:00 [kworker/u516
+root        1022  0.0  0.3 476364 24872 ?        Ssl  Jan28   0:05 /usr/sbin/Net
+root        1057  0.0  0.1 248664 10880 ?        Ss   Jan28   0:00 /usr/sbin/cup
+root        1058  0.0  0.1  16620  8960 ?        Ss   Jan28   0:00 sshd: /usr/sb
+root        1237  0.0  0.1 164724  8772 ?        Ssl  Jan28   0:09 /usr/sbin/rsy
+root        1292  0.0  0.0   4696  2432 ?        Ss   Jan28   0:00 /usr/sbin/atd
+root        1294  0.0  0.0 223948  3456 ?        Ss   Jan28   0:00 /usr/sbin/cro
+root        1295  0.0  0.1 453000 10704 ?        Ssl  Jan28   0:00 /usr/sbin/gdm
+root        1892  0.0  0.1 451880  9588 ?        Ssl  Jan28   0:00 /usr/libexec/
+root        1925  0.0  0.0  16372  6272 ?        Ss   Jan28   0:00 /usr/sbin/wpa
+colord      2153  0.0  0.2 530260 15892 ?        Ssl  Jan28   0:00 /usr/libexec/
+root        2227  0.0  0.0      0     0 ?        I<   Jan28   0:00 [kworker/1:2H
+root        2238  0.0  0.1 536612 15572 ?        Sl   Jan28   0:00 gdm-session-w
+admin       2255  0.0  0.1  24524 14480 ?        Ss   Jan28   0:01 /usr/lib/syst
+admin       2257  0.0  0.0 175344  7792 ?        S    Jan28   0:00 (sd-pam)
+admin       2273  0.0  0.0 452932  7324 ?        Sl   Jan28   0:00 /usr/bin/gnom
+admin       2277  0.0  0.0 374144  7524 tty2     Ssl+ Jan28   0:00 /usr/libexec/
+admin       2279  0.0  0.0  10568  4352 ?        Ss   Jan28   0:00 /usr/bin/dbus
+admin       2282  0.0  0.0   6816  4096 ?        S    Jan28   0:01 dbus-broker -
+admin       2284  0.0  0.2 513020 21156 tty2     Sl+  Jan28   0:00 /usr/libexec/
+admin       2322  0.0  0.0 303672  7484 ?        Ssl  Jan28   0:00 /usr/libexec/
+admin       2324  0.0  0.2 808472 22484 ?        Ssl  Jan28   0:00 /usr/libexec/
+admin       2342  0.2  3.7 4705648 294612 ?      Rsl  Jan28  10:21 /usr/bin/gnom
+admin       2359  0.0  0.1 452576  9568 ?        Ssl  Jan28   0:00 /usr/libexec/
+admin       2364  0.0  0.1 379916  8384 ?        Sl   Jan28   0:00 /usr/libexec/
+admin       2371  0.0  0.0 308456  7296 ?        Ssl  Jan28   0:00 /usr/libexec/
+admin       2377  0.0  0.0  10440  4096 ?        S    Jan28   0:00 /usr/bin/dbus
+admin       2378  0.0  0.0   5012  2560 ?        S    Jan28   0:00 dbus-broker -
+admin       2391  0.0  0.1 448088  8012 ?        Ssl  Jan28   0:00 /usr/libexec/
+admin       2393  0.0  0.2 586472 21780 ?        Ssl  Jan28   0:00 /usr/libexec/
+admin       2410  0.0  0.1 327648 13404 ?        S<sl Jan28   0:01 /usr/bin/pipe
+admin       2411  0.0  0.2 545036 15872 ?        S<sl Jan28   0:01 /usr/bin/wire
+admin       2414  0.0  0.1 321524 10780 ?        S<sl Jan28   0:01 /usr/bin/pipe
+admin       2417  0.0  0.4 1287356 31456 ?       Ssl  Jan28   0:00 /usr/libexec/
+geoclue     2426  0.0  0.4 561036 34004 ?        Ssl  Jan28   0:01 /usr/libexec/
+admin       2428  0.0  0.0 155992  5632 ?        Ssl  Jan28   0:00 /usr/libexec/
+admin       2447  0.0  0.1 527432 11748 ?        Ssl  Jan28   0:00 /usr/libexec/
+admin       2450  0.0  0.3 820308 24884 ?        Ssl  Jan28   0:00 /usr/libexec/
+admin       2464  0.0  0.1 448204  7952 ?        Ssl  Jan28   0:00 /usr/libexec/
+admin       2473  0.0  0.4 1051324 33212 ?       Ssl  Jan28   0:00 /usr/libexec/
+admin       2475  0.0  0.1 532456 13816 ?        Ssl  Jan28   0:21 /usr/libexec/
+admin       2480  0.0  0.1 450032  8832 ?        Ssl  Jan28   0:00 /usr/libexec/
+admin       2493  0.0  0.1 448284 10328 ?        Ssl  Jan28   0:00 /usr/libexec/
+root        2499  0.0  0.1 239092  8960 ?        Ss   Jan28   0:28 /usr/libexec/
+admin       2507  0.0  0.3 881264 30088 ?        Ssl  Jan28   0:00 /usr/libexec/
+admin       2527  0.0  0.3 2792420 26424 ?       Ssl  Jan28   0:00 /usr/bin/gjs 
+admin       2528  0.0  0.0 161596  7424 ?        Ssl  Jan28   0:00 /usr/libexec/
+admin       2535  0.0  0.1 522124 10708 ?        Ssl  Jan28   0:00 /usr/libexec/
+admin       2538  0.0  0.4 740524 33644 ?        Ssl  Jan28   0:01 /usr/libexec/
+admin       2539  0.0  0.2 595168 22844 ?        Ssl  Jan28   0:00 /usr/libexec/
+admin       2543  0.0  0.1 524488 10116 ?        Ssl  Jan28   0:04 /usr/libexec/
+admin       2544  0.0  0.4 665128 32184 ?        Ssl  Jan28   0:00 /usr/libexec/
+admin       2547  0.0  0.4 735896 33232 ?        Ssl  Jan28   0:00 /usr/libexec/
+admin       2548  0.0  0.4 666200 33756 ?        Ssl  Jan28   0:00 /usr/libexec/
+admin       2549  0.0  0.1 468080 15020 ?        Ssl  Jan28   0:00 /usr/libexec/
+admin       2555  0.0  0.1 595908 10472 ?        Ssl  Jan28   0:00 /usr/libexec/
+admin       2561  0.0  0.1 448040  8152 ?        Ssl  Jan28   0:00 /usr/libexec/
+admin       2563  0.0  0.1 678252 14528 ?        Ssl  Jan28   0:00 /usr/libexec/
+admin       2566  0.0  0.1 603412 13760 ?        Ssl  Jan28   0:10 /usr/libexec/
+admin       2569  0.0  0.0 232036  6912 ?        Sl   Jan28   0:00 /usr/libexec/
+admin       2574  0.0  0.1 530544 11340 ?        Ssl  Jan28   0:00 /usr/libexec/
+admin       2582  0.0  0.1 671464 11272 ?        Ssl  Jan28   0:00 /usr/libexec/
+admin       2591  0.0  0.5 982248 45116 ?        Sl   Jan28   0:00 /usr/libexec/
+admin       2592  0.0  0.3 665716 30588 ?        Ssl  Jan28   0:00 /usr/libexec/
+admin       2602  0.0  1.4 1050196 116776 ?      Sl   Jan28   0:14 /usr/bin/gnom
+admin       2638  0.0  0.5 388244 40176 ?        Sl   Jan28   2:19 /usr/bin/vmto
+admin       2654  0.0  0.2 599344 21720 ?        Sl   Jan28   0:00 /usr/libexec/
+admin       2655  0.0  0.3 2866144 30712 ?       Ssl  Jan28   0:00 /usr/bin/gjs 
+admin       2737  0.0  0.5 179432 45352 ?        S    Jan28   0:01 /usr/bin/Xway
+admin       2791  0.0  0.1 600504 12756 ?        Sl   Jan28   0:00 /usr/libexec/
+admin       2804  0.0  0.2 1229532 15688 ?       Ssl  Jan28   0:04 /usr/libexec/
+root        2808  0.0  0.0      0     0 ?        I<   Jan28   0:00 [kworker/u517
+admin       2817  0.0  0.1 817656 10260 ?        Ssl  Jan28   0:00 /usr/libexec/
+root        2828  0.0  0.0   2652  1664 ?        Ss   Jan28   0:00 fusermount -o
+admin       2835  0.0  0.4 896172 32140 ?        Ssl  Jan28   0:04 /usr/libexec/
+admin       2844  0.0  0.1 526612 13284 ?        Sl   Jan28   0:29 ibus-daemon -
+admin       2846  0.0  0.7 813032 61040 ?        Ssl  Jan28   0:03 /usr/libexec/
+admin       2865  0.0  0.1 449080  8780 ?        Sl   Jan28   0:00 /usr/libexec/
+admin       2866  0.0  0.4 595704 33164 ?        Sl   Jan28   0:05 /usr/libexec/
+admin       2869  0.0  0.3 516764 27876 ?        Sl   Jan28   0:00 /usr/libexec/
+admin       2875  0.0  0.1 449024 11072 ?        Ssl  Jan28   0:00 /usr/libexec/
+admin       2905  0.0  0.3 591444 29008 ?        Ssl  Jan28   0:03 /usr/libexec/
+admin       2914  0.0  0.0 375368  7040 ?        Sl   Jan28   0:09 /usr/libexec/
+root        2948  0.0  0.3 566216 29204 ?        Ssl  Jan28   0:06 /usr/libexec/
+admin       3117  0.0  0.1 374728  8060 ?        Ssl  Jan28   0:00 /usr/libexec/
+root        3341  0.0  0.0      0     0 ?        I<   Jan28   0:00 [kworker/R-tl
+root        7683  0.0  0.0      0     0 ?        I    Jan30   0:01 [kworker/u514
+root        7741  0.0  0.0      0     0 ?        I<   Jan30   0:00 [kworker/3:0H
+root        9970  0.0  0.0      0     0 ?        I    00:42   0:00 [kworker/u513
+root       10398  0.0  0.0      0     0 ?        I    05:42   0:00 [kworker/u513
+root       10719  0.0  0.0      0     0 ?        R    08:06   0:00 [kworker/u513
+root       11254  0.0  0.0      0     0 ?        I    10:21   0:00 [kworker/2:0-
+root       12980  0.0  0.0      0     0 ?        I<   10:23   0:00 [kworker/0:2H
+root       13014  0.0  0.0      0     0 ?        I    10:26   0:00 [kworker/3:1-
+root       13123  0.0  0.0      0     0 ?        I    10:42   0:00 [kworker/3:2]
+root       13128  0.0  0.0      0     0 ?        I    10:55   0:04 [kworker/0:0-
+root       13160  0.0  0.0      0     0 ?        I    11:11   0:00 [kworker/1:2-
+root       13173  0.0  0.0      0     0 ?        I    11:12   0:00 [kworker/u514
+root       13206  0.0  0.0      0     0 ?        I    11:42   0:00 [kworker/u514
+root       13207  0.0  0.0      0     0 ?        I    11:42   0:00 [kworker/0:1-
+root       13225  0.0  0.0      0     0 ?        I    11:57   0:00 [kworker/2:2-
+root       13227  0.0  0.0      0     0 ?        I    12:00   0:00 [kworker/1:1-
+root       13239  0.0  0.0      0     0 ?        I    12:06   0:00 [kworker/1:0-
+root       13326 15.6  1.1 565640 91884 ?        Ssl  12:09   0:10 /usr/libexec/
+root       13641  0.0  0.0      0     0 ?        I    12:09   0:00 [kworker/u514
+root       14233  0.0  0.0      0     0 ?        I    12:09   0:00 [kworker/2:1-
+root       14239  0.0  0.0      0     0 ?        I    12:09   0:00 [kworker/0:2-
+root       14240  0.0  0.0      0     0 ?        I    12:09   0:00 [kworker/3:0-
+admin      14252 10.3  0.6 762084 52508 ?        Ssl  12:10   0:00 /usr/libexec/
+admin      14270  1.0  0.0 224112  5504 pts/0    Ss   12:10   0:00 bash
+admin      14301  0.0  0.0 225368  3456 pts/0    R+   12:10   0:00 ps aux
+            4.   process using the PID of the same. 
+              Run a job in background 
+[admin@hostname01 Desktop]$ firefox &
+[1] 14908
+
+5.Bring a last background job in fore ground 
+[admin@hostname01 Desktop]$ firefox &
+[1] 14908
+
+6.	Run 3 jobs in background and bring first job in foreground 
+[admin@hostname01 Desktop]$ firefox &
+[1] 14908
+          7.    Stop current job = ctrl+z
+          8.    Start stopped job = bg
+          9.    Run a job =ps  -f
+          10. Kill last job =kil%1
+          11. Kill your shell using process id =kill -9 $$
+          12. Execute a ls command by setting priority as -10 using nice command =nice -n 10 ls
+          13. Display a date on every hour using cron tab= crontab -e
+0 ****date >> /path/to/logfile.log
+
